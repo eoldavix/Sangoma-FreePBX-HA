@@ -1,0 +1,27 @@
+[mysqld]
+binlog_format=ROW
+default-storage-engine=innodb
+innodb_autoinc_lock_mode=2
+query_cache_size=0
+query_cache_type=0
+bind-address=0.0.0.0
+log-error=/tmp/my.log
+
+#Galera: Config. Proveedor
+wsrep_provider=/usr/lib64/galera/libgalera_smm.so
+#wsrep_provider_options="gcache.size=32G"
+
+#Galera: Config. Cluster
+wsrep_cluster_name="clusterDB"
+wsrep_cluster_address="gcomm://10.0.0.1,10.0.0.2"
+
+#Galera: Config. Especifica Nodo
+wsrep_node_address=10.0.0.1
+wsrep_node_name=ha1.freepbx.local
+
+#Galera: Config. Sincronizacion
+wsrep_sst_method=rsync
+#wsrep_sst_auth=sst_user:tier1
+
+#Galera: Desde version 10.1 es necesario activar wsrep_on
+wsrep_on=ON
