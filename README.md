@@ -95,7 +95,14 @@ ldd /usr/lib64/libmaodbc.so
 
 
 ### pacemaker configuration
-- After all ocf heartbeat scripts are copied in `/usr/lib/ocf/resource.d/heartbeat`, to create the pacemaker/corosync cluster, we need to execute:
+#### installation
+```
+yum install pacemaker pcs resource-agents
+```
+
+#### configuration
+
+After all ocf heartbeat scripts are copied in `/usr/lib/ocf/resource.d/heartbeat`, to create the pacemaker/corosync cluster, we need to execute:
 ```
 pcs cluster auth ha1.freepbx.local ha2.freepbx.local
 pcs cluster setup --name test_asterisk ha1.freepbx.local ha2.freepbx.local \
